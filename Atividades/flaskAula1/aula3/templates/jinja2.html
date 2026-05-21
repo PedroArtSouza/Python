@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinja2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="home">
+        <div class="menu">
+            <div class="itens-menu">
+                <p style="padding-top: 40px;"><a href="{{ url_for('index')}}">Flask</a></p>
+                <p><a href="{{ url_for('page1')}}">Jinja2</a></p>
+                <p><a href="{{ url_for('page2')}}">Ex:Flask</a></p>
+                <p><a href="{{ url_for('page3')}}">Ex:Jinja</a></p>
+            </div>
+        </div>
+        <div class="div-texto">
+            <div class="textos">
+                <h1>O que e o Jinja2?</h1>
+                <p>Jinja2 é um popular motor de templates para a linguagem Python. Ele permite criar páginas web
+                    dinâmicas gerando HTML de forma simples, separando a lógica do backend da interface do usuário. É
+                    amplamente utilizado em frameworks como Flask e FastAPI.</p>
+
+                <h1>Por que usar Jinja2?</h1>
+                <p>Dinamicidade: Permite injetar variáveis, listas e resultados de banco de dados diretamente no HTML
+                    antes dele ser exibido no navegador.
+                    <br>
+                    Reutilização de código: Possui um sistema de herança que evita repetições (ex: ter o mesmo cabeçalho
+                    e rodapé em todas as páginas).
+                    <br>
+                    Segurança: Conta com execução em ambiente restrito (sandbox) e escape automático de caracteres para
+                    evitar ataques de injeção.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

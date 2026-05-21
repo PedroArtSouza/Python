@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="home">
+        <div class="menu">
+            <div class="itens-menu">
+                <p style="padding-top: 40px;"><a href="{{ url_for('index')}}">Flask</a></p>
+                <p><a href="{{ url_for('page1')}}">Jinja2</a></p>
+                <p><a href="{{ url_for('page2')}}">Ex:Flask</a></p>
+                <p><a href="{{ url_for('page3')}}">Ex:Jinja</a></p>
+            </div>
+        </div>
+        <div class="div-texto">
+            <div class="textos">
+                <h1>O que e o Flask?</h1>
+                <p>O Flask é um microframework para desenvolvimento web escrito em Python. Ele é conhecido como "micro"
+                    porque possui um núcleo minimalista, fornecendo apenas as ferramentas essenciais para colocar uma
+                    aplicação no ar. Em vez de impor uma estrutura rígida, ele oferece total flexibilidade para que você
+                    escolha e adicione apenas as bibliotecas que o seu projeto realmente precisa.</p>
+
+                <h1>Principais Características</h1>
+                <p>Simplicidade: É possível criar um servidor web funcional com pouquíssimas linhas de
+                    código.
+                    <br>
+                    Flexibilidade: Você não fica preso a um banco de dados ou formato de formulário específico. É
+                    possível integrar extensões conforme necessário.
+                    <br>
+                    Base Sólida: Ele utiliza o sistema de templates Jinja2 (para renderizar páginas dinâmicas) e 
+                    a biblioteca Werkzeug (para gerenciar requisições HTTP).</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for aluno in boletim %}
+        {% if aluno.nota >= 7%}
+        {{aluno.nome}}
+        <p>APROVADO</p>
+            {% elif aluno.nota < 7 %}
+            {{aluno.nome}}
+            <p>REPROVADO</p>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

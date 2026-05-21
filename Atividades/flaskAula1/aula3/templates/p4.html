@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinja2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="home">
+        <div class="menu">
+            <div class="itens-menu">
+                <p style="padding-top: 40px;"><a href="{{ url_for('index')}}">Flask</a></p>
+                <p><a href="{{ url_for('page1')}}">Jinja2</a></p>
+                <p><a href="{{ url_for('page2')}}">Ex:Flask</a></p>
+                <p><a href="{{ url_for('page3')}}">Ex:Jinja</a></p>
+            </div>
+        </div>
+        <div class="div-texto">
+            <div class="textos">
+                <h1>O que e o Jinja2?</h1>
+                <div class="div-img">
+                    <img src="{{ url_for('static',  filename='Jinja-2.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
