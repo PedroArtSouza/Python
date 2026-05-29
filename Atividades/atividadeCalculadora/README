@@ -1,0 +1,85 @@
+import math
+from flask import render_template, request
+
+def calcular():
+    num1 = float(request.form["num1"])
+    operacao = request.form["operacao"]
+
+    if operacao == "sqrt":
+        if num1 < 0:
+            resultado = "Erro: número negativo"
+            etapas = f"Não existe raiz real de {num1}."
+        else:
+            resultado = math.sqrt(num1)
+            etapas = f"√{num1} = {resultado}"
+            
+    if operacao == "log":
+        resultado = math.log10(num1)
+        etapas = f"log{num1}10 = {resultado}"
+    
+    if operacao == "bhaskara":
+        num3_valor = request.form.get("num3", "").strip()
+        if not num3_valor:
+            return render_template(
+                "index.html",
+                etapas="Informe o terceiro número para esta operação",
+                resultado="",
+            )
+        num3 = float(num3_valor)
+    
+    else:
+        num2_valor = request.form.get("num2", "").strip()
+        if not num2_valor:
+            return render_template(
+                "index.html",
+                etapas="Informe o segundo número para esta operação.",
+                resultados="",
+            )
+        num2 = float(num2_valor)
+    
+
+
+        if operacao == "+":
+            resultado = num1 + num2
+            etapas = f"{num1} + {num2} = {resultado}"
+            
+        elif operacao == "-":
+            resultado = num1 - num2
+            etapas = f"{num1} - {num2} = {resultado}"
+        
+        elif operacao == "*":
+            resultado = num1 * num2
+            etapas = f"{num1} * {num2} = {resultado}"
+            
+        elif operacao == "/":
+            resultado = num1 / num2
+            etapas = f"{num1} / {num2} = {resultado}"
+    
+        elif operacao == "**":
+            resultado = num1 ** num2
+            etapas = f"{num1} ^ {num2} = {resultado}"
+
+        elif operacao == "sqrt":
+            resultado = math.sqrt(num1) 
+            etapas = f"√{num1} = {resultado}"
+            
+        elif operacao == "bhaskara":
+            delta = (num2 ** 2) - (4 * num1 * num3)
+
+            if num1 == 0:
+                resultado = "Erro"
+                etapas = "O coeficiente 'a' (num1) deve ser diferente de zero."
+            elif delta < 0:
+                resultado = "Sem raízes reais"
+                etapas = "A equação não possui raízes reais (delta negativo)."
+            else:
+                resultado = [
+                    (-num2 + math.sqrt(delta)) / (2 * num1), # <-- Vírgula adicionada aqui
+                    (-num2 - math.sqrt(delta)) / (2 * num1)
+                ]
+                etapas = f"Raízes encontradas: x1 = {resultado[0]}, x2 = {resultado[1]}"
+
+                
+
+
+    return render_template('index.html', etapas=etapas, resultado=resultado)
