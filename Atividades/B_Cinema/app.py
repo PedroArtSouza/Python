@@ -3,7 +3,7 @@ import os
 from flask import Flask
 
 from controllers import cinema_bp, dashboard_bp
-from dados_iniciais import popular_dados
+from B_Cinema.dados_iniciais import popular_dados
 from models import db
 
 
