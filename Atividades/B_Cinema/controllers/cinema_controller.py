@@ -1,17 +1,14 @@
 from flask import Blueprint, redirect, render_template, request, url_for
-
+from datetime import datetime 
 from models import Filme, Sala, Sessao, db
 
 # Blueprint = módulo de rotas do cinema (registrar no app.py com register_blueprint)
 cinema_bp = Blueprint("cinema", __name__, url_prefix="/cinema")
 
-
 @cinema_bp.route("/")
 def index():
-    # TODO ALUNO: sessoes = Sessao.listar_com_detalhes()//
     sessoes = Sessao.listar_com_detalhes()
-    return render_template("cinema/lista_sessoes.html", sessoes=[])
-
+    return render_template("cinema/lista_sessoes.html", sessoes=sessoes)
 
 @cinema_bp.route("/sessao/cadastrar", methods=["GET", "POST"])
 def cadastrar_sessao():
@@ -19,15 +16,15 @@ def cadastrar_sessao():
     salas = Sala.listar()
 
     if request.method == "POST":
-        filme_id = request.form.get("filme.id")
-        sala_id = request.form.get("sala.id")
-        data_hora = request.form.get("data_hora")
-        preco= request.form.get("preco")
-        
+        filme_id = request.form.get("filme_id")
+        sala_id = request.form.get("sala_id")
+        data_hora_string = request.form.get("data_hora")
+        preco = request.form.get("preco")
+
         nova_sessao = Sessao(
             filme_id=filme_id,
-            sala_id = sala_id,
-            data_hora = data_hora,
+            sala_id=sala_id,
+            data_hora=data_hora_string, # Troque para data_hora_obj se necessário
             preco=preco,
         )
         

@@ -1,5 +1,4 @@
-from . import db
-from .base import ModeloBase
+from .base import db, ModeloBase
 
 
 class Sessao(ModeloBase):
@@ -7,8 +6,8 @@ class Sessao(ModeloBase):
 
     # TODO ALUNO: FK filme_id → filmes.id//
     # TODO ALUNO: FK sala_id → salas.id//
-    filme_id = db.Column(db.Integer, db.ForeingKey("filme.id"), nullable=False)
-    sala_id = db.Column(db.Integer, db.ForeingKey("sala.id"), nullable=False)
+    filme_id = db.Column(db.Integer, db.ForeignKey("filmes.id"), nullable=False)
+    sala_id = db.Column(db.Integer, db.ForeignKey("salas.id"), nullable=False)
     data_hora = db.Column(db.DateTime, nullable=False)
     preco = db.Column(db.Float, nullable=False)
     filme = db.relationship("Filme",back_populates="sessoes")

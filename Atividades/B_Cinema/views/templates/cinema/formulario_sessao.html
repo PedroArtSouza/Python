@@ -7,25 +7,34 @@
 <form method="POST" action="{{ url_for('cinema.cadastrar_sessao') }}">
     <div class="form-grupo">
         <label>Filme</label>
-        <!-- TODO ALUNO: loop filmes no select, name="filme_id" -->
         <select name="filme_id" required>
             <option value="">Selecione o filme...</option>
+            {% for filme in filmes %}
+                <option value="{{ filme.id }}">{{ filme.titulo }}</option>
+            {% endfor %}
         </select>
     </div>
+    
     <div class="form-grupo">
         <label>Sala</label>
         <select name="sala_id" required>
             <option value="">Selecione a sala...</option>
+            {% for sala in salas %}
+                <option value="{{ sala.id }}">Sala {{ sala.numero }}</option>
+            {% endfor %}
         </select>
     </div>
+    
     <div class="form-grupo">
         <label>Data e hora</label>
         <input type="datetime-local" name="data_hora" required>
     </div>
+    
     <div class="form-grupo">
         <label>Preço do ingresso (R$)</label>
         <input type="number" name="preco" step="any" min="0" required>
     </div>
+    
     <button type="submit">Salvar sessão</button>
 </form>
 

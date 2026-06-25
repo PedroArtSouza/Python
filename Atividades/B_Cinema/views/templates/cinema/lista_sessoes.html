@@ -5,24 +5,29 @@
 <h1>Programação do Cinema</h1>
 <p><a class="btn" href="{{ url_for('cinema.cadastrar_sessao') }}">+ Nova sessão</a></p>
 
-{# TODO ALUNO: {% if sessoes %} e {% for sessao in sessoes %} #}
-<table>
-    <thead>
-        <tr>
-            <th>Filme</th>
-            <th>Sala</th>
-            <th>Data/hora</th>
-            <th>Preço</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <!-- TODO: sessao.filme.titulo, sessao.sala.numero, sessao.data_hora, sessao.preco -->
-            <td>___________</td>
-            <td>___________</td>
-            <td>___________</td>
-            <td>___________</td>
-        </tr>
-    </tbody>
-</table>
+{% if sessoes %}
+    <table>
+        <thead>
+            <tr>
+                <th>Filme</th>
+                <th>Sala</th>
+                <th>Data/hora</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sessao in sessoes %}
+            <tr>
+                <td>{{ sessao.filme.titulo }}</td>
+                <td>{{ sessao.sala.numero }}</td>
+                <td>{{ sessao.data_hora }}</td>
+                <td>R$ {{ sessao.preco }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma sessão cadastrada no momento.</p>
+{% endif %}
+
 {% endblock %}
