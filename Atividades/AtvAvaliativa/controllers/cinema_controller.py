@@ -4,6 +4,7 @@ from models import Filme, Sala, Sessao, db
 
 # Blueprint = módulo de rotas do cinema (registrar no app.py com register_blueprint)
 cinema_bp = Blueprint("cinema", __name__, url_prefix="/cinema")
+dashboard_bp = Blueprint("dashboard", __name__, url_prefix="/dashboard")
 
 @cinema_bp.route("/")
 def index():

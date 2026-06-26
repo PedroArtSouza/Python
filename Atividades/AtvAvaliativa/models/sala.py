@@ -6,8 +6,8 @@ class Sala(ModeloBase):
 
     numero = db.Column(db.Integer, nullable=False)
     capacidade = db.Column(db.Integer, nullable=False)
-    sessoes = db.relationship("Sessao", back_populates="salas")
-    # TODO ALUNO: relationship sessoes//
+
+    sessoes = db.relationship("Sessao", back_populates="sala")
 
     @classmethod
     def listar(cls):
